@@ -1,0 +1,153 @@
+import java.util.*;
+/**
+ * Class Item - an item in an adventure game.
+ *
+ * An  "Item" has a description and a weight.
+ * 
+ * @author  Poul Henriksen
+ * @version 2011.07.31
+ */
+public class Character
+{               
+    private String name;
+// The name of the item.
+    private String description;
+// A description of the item.
+    private String messageOne;
+    private String messageTwo;
+    private int interactionCount;
+    /**
+     * Create a new item with the given description and weight.
+     * @param name The item's name
+     * @param description The item's description
+     * @param weight The item's weight
+     */
+    public Character(String name, String description, String messageOne, String messageTwo)
+    {
+        this.name = name;
+        this.description = description;
+        this.messageOne = messageOne;
+        this.messageTwo = messageTwo;
+    }
+
+    /**
+     * Return the item's name.
+     * @return The name
+     */
+    public String getName()
+    {
+        return name;
+    }
+        public String getMessageOne()
+    {
+        interactionCount = interactionCount + 1;
+        return messageOne;
+    }
+    
+    public String getMessageTwo()
+    {
+        return messageTwo;
+    }
+
+    /**
+     * Return a description of the item.
+     * @return The description.
+     */
+    public String getDescription()
+    {
+        return description;
+    }
+}
+    
+    
+    import java.util.HashMap;
+import java.util.Iterator;
+
+/**
+ * A list of items.
+ * 
+ * @author 
+ * @version 
+ */
+public class Characters
+{
+    // A map of item names to items.
+    private HashMap<String, Character> characters;
+    
+    //* Create a new item list.*/
+    public Characters()
+    {
+        characters = new HashMap<String, Character>();
+    }
+    
+    /**
+     * Return an Iterator over the items.
+     * @return An Iterator.
+     */
+    public Iterator<Character> iterator()
+    {
+        return characters.values().iterator();
+    }
+
+    /**
+     * Remove the given item.
+     * @param name The name of the item to be removed.
+     */
+    public Character remove(String name)
+    {
+        return characters.remove(name);
+    }
+    
+    /**
+     * Put the given item in the list.
+     * @param name The name of the item.
+     * @param value The item.
+     */
+    public void put(String name, Character value)
+    {
+        characters.put(name, value);
+    }
+    
+    /**
+     * Return the item with the given name
+     * @param name The name of the item to return
+     * @return The named item, or null if it is not in the list.
+     */
+    public Character get(String name)
+    {
+        return characters.get(name);
+    }
+    
+//    public Item talk(String name)
+//    {
+//        items.talk(name);
+//    }
+//    
+    /**
+     * Return a string listing the descriptions of the
+     * items in the list.
+     */
+    public String getLongDescription() 
+    {
+        String returnString = "";
+        for(Iterator<Character> iter = characters.values().iterator(); iter.hasNext(); )
+            returnString += "  " + iter.next().getDescription();
+        
+        return returnString;     
+    }
+    
+    /**
+     * Return a string listing the names of the
+     * items in the list.
+     */
+    public String getShortDescription() 
+    {
+        String returnString = "";
+        for(Iterator<Character> iter = characters.values().iterator(); iter.hasNext(); )
+            returnString += " " + iter.next().getName();
+        
+        return returnString;     
+    }
+    
+
+}
