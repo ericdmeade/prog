@@ -1,0 +1,26 @@
+        outside.setExit("north", reception);
+        giftshop.setExit("east", reception);
+        
+        reception.setExit("west", giftshop);
+        reception.setExit("north", historyblock);
+        reception.setExit("south", outside);
+
+        historyblock.setExit("south", reception);
+        historyblock.setExit("north", exhibition);
+        historyblock.setExits("east", artBlock);
+        
+        scienceblock.setExit("west", artBlock);
+        
+        exhibition.setExit("east", room_b);
+        exhibition.setExit("west", room_a);
+        exhibition.setExit("south", historyBlock);
+        
+        artblock.setExit("east", scienceBlock);
+        artblock.setExit("south", gallery);
+        artblock.setExit("west", scienceBlock);
+
+        room_a.setExit("east", exhibition);
+        room_b.setExit("west", exhibition);
+        
+    thePlayer.setRoom(outside);  // start game outside 
+    }
