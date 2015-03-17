@@ -1,0 +1,28 @@
+public static void save()
+{
+ System.out.println("Saving game...\n");
+ Main.sleep();
+ try {
+  ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("data/saves/save.ser"));
+  out.writeObject(p);
+  out.close();
+ } catch (Exception e) {
+  System.out.print("Save failed");
+  e.printStackTrace();
+ }
+}
+
+public static void load()
+{
+ System.out.print("Loading game...\n");
+ try 
+ {
+  ObjectInputStream in = new ObjectInputStream(new FileInputStream("data/saves/save.ser"));
+  Object object = in.readObject();
+  if(object instanceof PlayerHandle) {
+   object = (Player) object;
+  }
+  in.close();
+ } catch(Exception e) {
+  e.printStackTrace();
+ }
